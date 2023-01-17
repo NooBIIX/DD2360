@@ -1,0 +1,308 @@
+
+1.
+
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_4$ nvcc -arch=sm_60 heat.cu -lcublas -lcusparse -o heat
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_4$ ./heat 64 1
+The X dimension of the grid is 64 
+The number of time steps to perform is 1 
+Timing - Allocating device memory. 		Elasped 63059 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 51 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 1 microseconds 
+Timing - Initializing memory on the host. 		Elasped 0 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 254 microseconds 
+Compute the SMPV. 			Elasped 1686 microseconds 
+The relative error of the approximation is 5.047489
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_4$ ./heat 128 1
+The X dimension of the grid is 128 
+The number of time steps to perform is 1 
+Timing - Allocating device memory. 		Elasped 49803 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 56 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 1 microseconds 
+Timing - Initializing memory on the host. 		Elasped 0 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 256 microseconds 
+Compute the SMPV. 			Elasped 27 microseconds 
+The relative error of the approximation is 7.235710
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_4$ ./heat 256 1
+The X dimension of the grid is 256 
+The number of time steps to perform is 1 
+Timing - Allocating device memory. 		Elasped 42334 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 59 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 3 microseconds 
+Timing - Initializing memory on the host. 		Elasped 0 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 254 microseconds 
+Compute the SMPV. 			Elasped 26 microseconds 
+The relative error of the approximation is 10.301116
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_4$ ./heat 512 1
+The X dimension of the grid is 512 
+The number of time steps to perform is 1 
+Timing - Allocating device memory. 		Elasped 42365 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 61 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 5 microseconds 
+Timing - Initializing memory on the host. 		Elasped 0 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 276 microseconds 
+Compute the SMPV. 			Elasped 20 microseconds 
+The relative error of the approximation is 14.616030
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_4$ ./heat 1024 1
+The X dimension of the grid is 1024 
+The number of time steps to perform is 1 
+Timing - Allocating device memory. 		Elasped 40279 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 60 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 11 microseconds 
+Timing - Initializing memory on the host. 		Elasped 1 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 272 microseconds 
+Compute the SMPV. 			Elasped 27 microseconds 
+The relative error of the approximation is 20.704087
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_4$ ./heat 2048 1
+The X dimension of the grid is 2048 
+The number of time steps to perform is 1 
+Timing - Allocating device memory. 		Elasped 47509 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 68 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 17 microseconds 
+Timing - Initializing memory on the host. 		Elasped 1 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 269 microseconds 
+Compute the SMPV. 			Elasped 40 microseconds 
+The relative error of the approximation is 29.303943
+
+
+
+
+2.
+
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_4$ for i in {100..10000..900}; do ./heat 128 $i; done
+The X dimension of the grid is 128 
+The number of time steps to perform is 100 
+Timing - Allocating device memory. 		Elasped 53858 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 50 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 2 microseconds 
+Timing - Initializing memory on the host. 		Elasped 0 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 256 microseconds 
+Compute the SMPV. 			Elasped 299 microseconds 
+The relative error of the approximation is 3.318021
+The X dimension of the grid is 128 
+The number of time steps to perform is 1000 
+Timing - Allocating device memory. 		Elasped 39642 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 85 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 2 microseconds 
+Timing - Initializing memory on the host. 		Elasped 0 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 322 microseconds 
+Compute the SMPV. 			Elasped 2856 microseconds 
+The relative error of the approximation is 1.488118
+The X dimension of the grid is 128 
+The number of time steps to perform is 1900 
+Timing - Allocating device memory. 		Elasped 42242 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 53 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 1 microseconds 
+Timing - Initializing memory on the host. 		Elasped 0 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 335 microseconds 
+Compute the SMPV. 			Elasped 5223 microseconds 
+The relative error of the approximation is 1.002871
+The X dimension of the grid is 128 
+The number of time steps to perform is 2800 
+Timing - Allocating device memory. 		Elasped 39645 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 53 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 1 microseconds 
+Timing - Initializing memory on the host. 		Elasped 0 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 266 microseconds 
+Compute the SMPV. 			Elasped 8025 microseconds 
+The relative error of the approximation is 0.709273
+The X dimension of the grid is 128 
+The number of time steps to perform is 3700 
+Timing - Allocating device memory. 		Elasped 40100 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 52 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 1 microseconds 
+Timing - Initializing memory on the host. 		Elasped 0 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 353 microseconds 
+Compute the SMPV. 			Elasped 10482 microseconds 
+The relative error of the approximation is 0.515628
+The X dimension of the grid is 128 
+The number of time steps to perform is 4600 
+Timing - Allocating device memory. 		Elasped 38515 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 54 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 1 microseconds 
+Timing - Initializing memory on the host. 		Elasped 0 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 235 microseconds 
+Compute the SMPV. 			Elasped 12569 microseconds 
+The relative error of the approximation is 0.383105
+The X dimension of the grid is 128 
+The number of time steps to perform is 5500 
+Timing - Allocating device memory. 		Elasped 39103 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 50 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 1 microseconds 
+Timing - Initializing memory on the host. 		Elasped 0 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 253 microseconds 
+Compute the SMPV. 			Elasped 16243 microseconds 
+The relative error of the approximation is 0.289539
+The X dimension of the grid is 128 
+The number of time steps to perform is 6400 
+Timing - Allocating device memory. 		Elasped 38638 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 50 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 1 microseconds 
+Timing - Initializing memory on the host. 		Elasped 1 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 261 microseconds 
+Compute the SMPV. 			Elasped 18334 microseconds 
+The relative error of the approximation is 0.221721
+The X dimension of the grid is 128 
+The number of time steps to perform is 7300 
+Timing - Allocating device memory. 		Elasped 38674 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 50 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 1 microseconds 
+Timing - Initializing memory on the host. 		Elasped 0 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 257 microseconds 
+Compute the SMPV. 			Elasped 22128 microseconds 
+The relative error of the approximation is 0.171513
+The X dimension of the grid is 128 
+The number of time steps to perform is 8200 
+Timing - Allocating device memory. 		Elasped 39419 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 46 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 1 microseconds 
+Timing - Initializing memory on the host. 		Elasped 0 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 257 microseconds 
+Compute the SMPV. 			Elasped 23029 microseconds 
+The relative error of the approximation is 0.133713
+The X dimension of the grid is 128 
+The number of time steps to perform is 9100 
+Timing - Allocating device memory. 		Elasped 38179 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 46 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 1 microseconds 
+Timing - Initializing memory on the host. 		Elasped 0 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 232 microseconds 
+Compute the SMPV. 			Elasped 25837 microseconds 
+The relative error of the approximation is 0.104876
+The X dimension of the grid is 128 
+The number of time steps to perform is 10000 
+Timing - Allocating device memory. 		Elasped 40273 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 50 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 1 microseconds 
+Timing - Initializing memory on the host. 		Elasped 0 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 267 microseconds 
+Compute the SMPV. 			Elasped 27654 microseconds 
+The relative error of the approximation is 0.082647
+
+
+
+3.
+
+
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_4$ nvprof ./heat 1024 100
+The X dimension of the grid is 1024 
+The number of time steps to perform is 100 
+==13774== NVPROF is profiling process 13774, command: ./heat 1024 100
+Timing - Allocating device memory. 		Elasped 96257 microseconds 
+Timing - Prefetching GPU memory to the host. 		Elasped 150 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 21 microseconds 
+Timing - Initializing memory on the host. 		Elasped 2 microseconds 
+Timing - Prefetching GPU memory to the device. 		Elasped 483 microseconds 
+==13774== Warning: Profiling results might be incorrect with current version of nvcc compiler used to compile cuda app. Compile with nvcc compiler 9.0 or later version to get correct profiling results. Ignore this warning if code is already compiled with the recommended nvcc version 
+Compute the SMPV. 			Elasped 722 microseconds 
+The relative error of the approximation is 10.185756
+==13774== Profiling application: ./heat 1024 100
+==13774== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   79.55%  7.2863ms       204  35.717us  25.376us  207.94us  void nrm2_kernel<double, double, double, int=0, int=0, int=128>(cublasNrm2Params<double, double>)
+                    9.08%  831.73us       100  8.3170us  8.2560us  10.273us  _ZN8cusparse21load_balancing_kernelILj512ELj4ELm16384EiiNS_7CsrmvOpILi512EdLb0EEEJKiKdS4_didEEEvPKT3_T2_S5_S5_iPKS8_T4_DpPT5_
+                    5.87%  537.67us       100  5.3760us  5.2800us  8.0000us  _ZN8cusparse30binary_search_partition_kernelILi128ELi2048EiiNS_6ScaleYINS_20MatrixWiseMulPolicy1ILb0EdEEidEEJdEEEvPKT2_T1_S5_iPS8_T3_DpPT4_
+                    3.45%  315.78us       101  3.1260us  2.7840us  14.112us  void axpy_kernel_val<double, double>(cublasAxpyParamsVal<double, double, double>)
+                    1.08%  98.497us       102     965ns     831ns  12.352us  [CUDA memcpy HtoD]
+                    0.94%  86.499us       102     848ns     831ns  1.2160us  [CUDA memcpy DtoH]
+                    0.03%  2.6240us         1  2.6240us  2.6240us  2.6240us  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::__tabulate::functor<thrust::device_ptr<double>, thrust::system::detail::generic::detail::compute_sequence_value<double, void>, long>, long>, thrust::cuda_cub::__tabulate::functor<thrust::device_ptr<double>, thrust::system::detail::generic::detail::compute_sequence_value<double, void>, long>, long>(thrust::device_ptr<double>, double)
+      API calls:   77.64%  378.31ms        12  31.526ms  3.0400us  140.85ms  cudaFree
+                   19.75%  96.247ms         5  19.249ms  7.2380us  96.190ms  cudaMallocManaged
+                    1.80%  8.7574ms       204  42.928us  2.3180us  294.07us  cudaMemcpyAsync
+                    0.28%  1.3652ms       506  2.6980us  2.0120us  39.185us  cudaLaunchKernel
+                    0.13%  626.16us        10  62.615us  14.415us  379.14us  cudaMemPrefetchAsync
+                    0.10%  508.00us       395  1.2860us      92ns  82.576us  cuDeviceGetAttribute
+                    0.06%  296.95us      1152     257ns     107ns  3.1400us  cuGetProcAddress
+                    0.04%  213.67us       103  2.0740us  1.6670us  17.627us  cudaFuncGetAttributes
+                    0.04%  209.89us         4  52.472us  3.4850us  138.16us  cudaMalloc
+                    0.02%  105.80us         4  26.448us  14.220us  48.843us  cuDeviceGetName
+                    0.02%  99.481us         1  99.481us  99.481us  99.481us  cudaGetDeviceProperties
+                    0.02%  96.189us       103     933ns     827ns  4.1990us  cudaStreamSynchronize
+                    0.02%  91.220us       306     298ns     226ns  1.2430us  cudaStreamGetCaptureInfo
+                    0.02%  86.469us       621     139ns      88ns     819ns  cudaGetLastError
+                    0.02%  74.621us       102     731ns     608ns  2.7730us  cudaEventQuery
+                    0.01%  71.678us       102     702ns     644ns  2.0690us  cudaEventRecord
+                    0.00%  14.447us        18     802ns     348ns  7.2250us  cudaEventCreateWithFlags
+                    0.00%  13.342us         7  1.9060us     225ns  5.4360us  cudaGetDevice
+                    0.00%  12.154us        17     714ns     205ns  6.7850us  cudaDeviceGetAttribute
+                    0.00%  9.2170us         3  3.0720us  2.1650us  4.7280us  cuInit
+                    0.00%  9.0410us        18     502ns     278ns  2.8540us  cudaEventDestroy
+                    0.00%  7.0430us         1  7.0430us  7.0430us  7.0430us  cuDeviceGetPCIBusId
+                    0.00%  6.7350us         4  1.6830us     719ns  2.8180us  cudaDeviceSynchronize
+                    0.00%  2.6930us         6     448ns     188ns  1.2370us  cuDeviceGetCount
+                    0.00%  1.5340us         4     383ns     224ns     721ns  cuDeviceTotalMem
+                    0.00%  1.4500us         5     290ns     117ns     668ns  cuDeviceGet
+                    0.00%  1.0280us         4     257ns     127ns     400ns  cuDeviceGetUuid
+                    0.00%     993ns         1     993ns     993ns     993ns  cudaGetSymbolAddress
+                    0.00%     910ns         4     227ns     119ns     359ns  cuModuleGetLoadingMode
+                    0.00%     709ns         3     236ns     119ns     382ns  cuDriverGetVersion
+                    0.00%     269ns         2     134ns     103ns     166ns  cudaPeekAtLastError
+                    0.00%     233ns         1     233ns     233ns     233ns  cudaGetDeviceCount
+                    0.00%     135ns         1     135ns     135ns     135ns  cudaDriverGetVersion
+
+==13774== Unified Memory profiling result:
+Device "NVIDIA GeForce GTX 1060 with Max-Q Design (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+       5  12.000KB  8.0000KB  24.000KB  60.00000KB  15.26300us  Host To Device
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_4$ 
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_4$ 
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_4$ nvcc -arch=sm_60 heat_noprefetch.cu -lcublas -lcusparse -o heat_nopre
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_4$ nvprof ./heat_nopre 1024 100
+The X dimension of the grid is 1024 
+The number of time steps to perform is 100 
+==13870== NVPROF is profiling process 13870, command: ./heat_nopre 1024 100
+Timing - Allocating device memory. 		Elasped 106054 microseconds 
+Timing - Initializing the sparse matrix on the host. 		Elasped 149 microseconds 
+Timing - Initializing memory on the host. 		Elasped 1 microseconds 
+==13870== Warning: Profiling results might be incorrect with current version of nvcc compiler used to compile cuda app. Compile with nvcc compiler 9.0 or later version to get correct profiling results. Ignore this warning if code is already compiled with the recommended nvcc version 
+Compute the SMPV. 			Elasped 728 microseconds 
+The relative error of the approximation is 10.185756
+==13870== Profiling application: ./heat_nopre 1024 100
+==13870== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   77.16%  7.2796ms       204  35.684us  25.344us  200.10us  void nrm2_kernel<double, double, double, int=0, int=0, int=128>(cublasNrm2Params<double, double>)
+                    9.06%  854.92us       100  8.5490us  8.3840us  18.208us  _ZN8cusparse21load_balancing_kernelILj512ELj4ELm16384EiiNS_7CsrmvOpILi512EdLb0EEEJKiKdS4_didEEEvPKT3_T2_S5_S5_iPKS8_T4_DpPT5_
+                    8.71%  821.58us       100  8.2150us  5.2790us  295.43us  _ZN8cusparse30binary_search_partition_kernelILi128ELi2048EiiNS_6ScaleYINS_20MatrixWiseMulPolicy1ILb0EdEEidEEJdEEEvPKT2_T1_S5_iPS8_T3_DpPT4_
+                    3.18%  299.97us       101  2.9700us  2.9110us  4.0960us  void axpy_kernel_val<double, double>(cublasAxpyParamsVal<double, double, double>)
+                    0.93%  88.006us       102     862ns     831ns  1.1200us  [CUDA memcpy HtoD]
+                    0.93%  87.748us       102     860ns     831ns  1.2160us  [CUDA memcpy DtoH]
+                    0.03%  2.6880us         1  2.6880us  2.6880us  2.6880us  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::__tabulate::functor<thrust::device_ptr<double>, thrust::system::detail::generic::detail::compute_sequence_value<double, void>, long>, long>, thrust::cuda_cub::__tabulate::functor<thrust::device_ptr<double>, thrust::system::detail::generic::detail::compute_sequence_value<double, void>, long>, long>(thrust::device_ptr<double>, double)
+      API calls:   75.87%  371.04ms        12  30.920ms  3.4910us  142.69ms  cudaFree
+                   21.68%  106.05ms         5  21.210ms  2.9290us  106.02ms  cudaMallocManaged
+                    1.83%  8.9663ms       204  43.952us  2.3280us  299.25us  cudaMemcpyAsync
+                    0.28%  1.3706ms       506  2.7080us  2.0530us  43.609us  cudaLaunchKernel
+                    0.07%  354.95us       395     898ns      95ns  38.748us  cuDeviceGetAttribute
+                    0.04%  204.44us      1152     177ns     106ns  3.1190us  cuGetProcAddress
+                    0.04%  194.37us         4  48.591us  3.1330us  124.11us  cudaMalloc
+                    0.04%  186.09us       103  1.8060us  1.6760us  5.8840us  cudaFuncGetAttributes
+                    0.02%  104.98us       621     169ns      94ns  15.818us  cudaGetLastError
+                    0.02%  99.777us         1  99.777us  99.777us  99.777us  cudaGetDeviceProperties
+                    0.02%  95.412us       103     926ns     790ns  3.5550us  cudaStreamSynchronize
+                    0.02%  89.966us       306     294ns     227ns  2.0010us  cudaStreamGetCaptureInfo
+                    0.02%  78.612us         4  19.653us  14.991us  24.059us  cuDeviceGetName
+                    0.02%  76.549us       102     750ns     553ns  3.2920us  cudaEventQuery
+                    0.01%  70.444us       102     690ns     621ns  1.8520us  cudaEventRecord
+                    0.00%  11.873us        18     659ns     329ns  5.0090us  cudaEventCreateWithFlags
+                    0.00%  11.702us         1  11.702us  11.702us  11.702us  cuDeviceGetPCIBusId
+                    0.00%  8.5880us        18     477ns     282ns  2.6370us  cudaEventDestroy
+                    0.00%  8.3900us         7  1.1980us     243ns  3.8160us  cudaGetDevice
+                    0.00%  7.5310us         4  1.8820us     777ns  3.2900us  cudaDeviceSynchronize
+                    0.00%  6.7060us         3  2.2350us  2.1540us  2.3970us  cuInit
+                    0.00%  6.3990us        17     376ns     202ns  1.4950us  cudaDeviceGetAttribute
+                    0.00%  1.7900us         6     298ns     150ns     657ns  cuDeviceGetCount
+                    0.00%  1.3470us         4     336ns     212ns     495ns  cuDeviceTotalMem
+                    0.00%     995ns         1     995ns     995ns     995ns  cudaGetSymbolAddress
+                    0.00%     911ns         4     227ns     115ns     516ns  cuModuleGetLoadingMode
+                    0.00%     849ns         5     169ns     111ns     340ns  cuDeviceGet
+                    0.00%     650ns         4     162ns     144ns     191ns  cuDeviceGetUuid
+                    0.00%     443ns         1     443ns     443ns     443ns  cudaDriverGetVersion
+                    0.00%     424ns         3     141ns     128ns     168ns  cuDriverGetVersion
+                    0.00%     271ns         2     135ns      99ns     172ns  cudaPeekAtLastError
+                    0.00%     198ns         1     198ns     198ns     198ns  cudaGetDeviceCount
+
+==13870== Unified Memory profiling result:
+Device "NVIDIA GeForce GTX 1060 with Max-Q Design (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+       5  12.800KB  4.0000KB  24.000KB  64.00000KB  13.82400us  Host To Device
+       1         -         -         -           -  287.9390us  Gpu page fault groups
+Total CPU Page faults: 1
+

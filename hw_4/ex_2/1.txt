@@ -1,0 +1,138 @@
+1.
+
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ls
+vecadd4  vecadd_4streamed.cu  vecadd.cu
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ nvcc -arch=sm_60 -I/usr/local/cuda/samples/common/inc vecadd.cu -o vecadd
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ls
+vecadd  vecadd4  vecadd_4streamed.cu  vecadd.cu
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadd 1024
+The input length is 1024
+Transfer time host to device 0.000032 seconds
+gridSize is 1
+Kernel time 0.000019 seconds
+Transfer time device to host 0.000016 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadd 10240
+The input length is 10240
+Transfer time host to device 0.000085 seconds
+gridSize is 10
+Kernel time 0.000019 seconds
+Transfer time device to host 0.000067 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadd 102400
+The input length is 102400
+Transfer time host to device 0.000651 seconds
+gridSize is 100
+Kernel time 0.000137 seconds
+Transfer time device to host 0.000564 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadd 1024000
+The input length is 1024000
+Transfer time host to device 0.004725 seconds
+gridSize is 1000
+Kernel time 0.000281 seconds
+Transfer time device to host 0.004387 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadd 10240000
+The input length is 10240000
+Transfer time host to device 0.045534 seconds
+gridSize is 10000
+Kernel time 0.001747 seconds
+Transfer time device to host 0.043127 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadd 102400000
+The input length is 102400000
+Transfer time host to device 0.451103 seconds
+gridSize is 100000
+Kernel time 0.016820 seconds
+Transfer time device to host 0.559063 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ nvcc -arch=sm_60 -I/usr/local/cuda/samples/common/inc vecadd_4streamed.cu -o vecadd4
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadd4 1024
+The input length is 1024
+Transfer time host to device 0.000027 seconds
+Kernel time 0.000015 seconds
+Transfer time device to host 0.000035 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadd4 10240
+The input length is 10240
+Transfer time host to device 0.000042 seconds
+Kernel time 0.000015 seconds
+Transfer time device to host 0.000082 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadd4 102400
+The input length is 102400
+Transfer time host to device 0.000265 seconds
+Kernel time 0.000019 seconds
+Transfer time device to host 0.000519 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadd4 1024000
+The input length is 1024000
+Transfer time host to device 0.002477 seconds
+Kernel time 0.000016 seconds
+Transfer time device to host 0.004369 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadd4 10240000
+The input length is 10240000
+Transfer time host to device 0.025946 seconds
+Kernel time 0.000015 seconds
+Transfer time device to host 0.036852 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadd4 102400000
+The input length is 102400000
+Transfer time host to device 0.257467 seconds
+Kernel time 0.000059 seconds
+Transfer time device to host 0.473306 seconds
+
+
+
+
+2.
+
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ nvprof --output-profile vecadd4.nvvp -f ./vecadd4 102400000
+The input length is 102400000
+==9263== NVPROF is profiling process 9263, command: ./vecadd4 102400000
+Transfer time host to device 0.283825 seconds
+Kernel time 0.000046 seconds
+Transfer time device to host 0.375107 seconds
+==9263== Generated result file: /home/zihao/Desktop/DD2360/hw_4/ex_2/vecadd4.nvvp
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ nvvp -vm /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+Gtk-Message: 01:17:56.364: Failed to load module "canberra-gtk-module"
+
+
+
+
+3.
+
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ nvcc -arch=sm_60 -I/usr/local/cuda/samples/common/inc vecadd_streamed.cu -o vecadds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadds 102400000
+The input length is 102400000
+Transfer time host to device 0.256260 seconds
+Kernel time 0.000023 seconds
+Transfer time device to host 0.360870 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ nvcc -arch=sm_60 -I/usr/local/cuda/samples/common/inc vecadd_streamed.cu -o vecadds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadds 102400000
+The input length is 102400000
+Transfer time host to device 0.258280 seconds
+Kernel time 0.000039 seconds
+Transfer time device to host 0.356566 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ nvcc -arch=sm_60 -I/usr/local/cuda/samples/common/inc vecadd_streamed.cu -o vecadds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadds 102400000
+The input length is 102400000
+Transfer time host to device 0.257612 seconds
+Kernel time 0.000116 seconds
+Transfer time device to host 0.370111 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ nvcc -arch=sm_60 -I/usr/local/cuda/samples/common/inc vecadd_streamed.cu -o vecadds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadds 102400000
+The input length is 102400000
+Transfer time host to device 0.256612 seconds
+Kernel time 0.000333 seconds
+Transfer time device to host 0.405631 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ nvcc -arch=sm_60 -I/usr/local/cuda/samples/common/inc vecadd_streamed.cu -o vecadds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadds 102400000
+The input length is 102400000
+Transfer time host to device 0.258849 seconds
+Kernel time 0.002111 seconds
+Transfer time device to host 0.552197 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ nvcc -arch=sm_60 -I/usr/local/cuda/samples/common/inc vecadd_streamed.cu -o vecadds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadds 102400000
+The input length is 102400000
+Transfer time host to device 0.264969 seconds
+Kernel time 0.011468 seconds
+Transfer time device to host 1.070772 seconds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ nvcc -arch=sm_60 -I/usr/local/cuda/samples/common/inc vecadd_streamed.cu -o vecadds
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_2$ ./vecadds 102400000
+The input length is 102400000
+Transfer time host to device 0.260143 seconds
+Kernel time 0.011675 seconds
+Transfer time device to host 1.076398 seconds
+

@@ -1,0 +1,500 @@
+2.
+
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ ls
+vecmul.cu
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvcc -arch=sm_60 -I/usr/local/cuda/samples/common/inc vecmul.cu -o vecmul
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul 32 32 32 32
+Input matrix dim (32 x 32) (32 x 32) (32 x 32)
+==9590== NVPROF is profiling process 9590, command: ./vecmul 32 32 32 32
+Transfer time host to device 0.000028 seconds
+Kernel Time 0.000032 seconds
+Transfer Time device to host 0.000017 seconds
+==9590== Profiling application: ./vecmul 32 32 32 32
+==9590== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   67.43%  11.265us         1  11.265us  11.265us  11.265us  gemm(double*, double*, double*, int, int, int, int)
+                   21.65%  3.6160us         2  1.8080us  1.7920us  1.8240us  [CUDA memcpy HtoD]
+                   10.92%  1.8240us         1  1.8240us  1.8240us  1.8240us  [CUDA memcpy DtoH]
+      API calls:   99.67%  77.890ms         3  25.963ms  1.5580us  77.886ms  cudaMalloc
+                    0.12%  92.529us       101     916ns     102ns  37.542us  cuDeviceGetAttribute
+                    0.09%  70.164us         3  23.388us  1.9380us  63.660us  cudaFree
+                    0.05%  40.832us         3  13.610us  7.4020us  17.179us  cudaMemcpy
+                    0.02%  16.940us         1  16.940us  16.940us  16.940us  cuDeviceGetName
+                    0.02%  16.376us         1  16.376us  16.376us  16.376us  cudaLaunchKernel
+                    0.02%  13.608us         1  13.608us  13.608us  13.608us  cudaDeviceSynchronize
+                    0.01%  4.7870us         1  4.7870us  4.7870us  4.7870us  cuDeviceGetPCIBusId
+                    0.00%  1.0120us         3     337ns     109ns     757ns  cuDeviceGetCount
+                    0.00%     526ns         2     263ns     116ns     410ns  cuDeviceGet
+                    0.00%     321ns         1     321ns     321ns     321ns  cuDeviceTotalMem
+                    0.00%     283ns         1     283ns     283ns     283ns  cuModuleGetLoadingMode
+                    0.00%     194ns         1     194ns     194ns     194ns  cuDeviceGetUuid
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul 64 64 64 64
+Input matrix dim (64 x 64) (64 x 64) (64 x 64)
+==9626== NVPROF is profiling process 9626, command: ./vecmul 64 64 64 64
+Transfer time host to device 0.000035 seconds
+Kernel Time 0.000040 seconds
+Transfer Time device to host 0.000045 seconds
+==9626== Profiling application: ./vecmul 64 64 64 64
+==9626== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   41.36%  19.232us         1  19.232us  19.232us  19.232us  gemm(double*, double*, double*, int, int, int, int)
+                   36.41%  16.928us         1  16.928us  16.928us  16.928us  [CUDA memcpy DtoH]
+                   22.23%  10.336us         2  5.1680us  5.1520us  5.1840us  [CUDA memcpy HtoD]
+      API calls:   99.56%  74.808ms         3  24.936ms  1.4230us  74.804ms  cudaMalloc
+                    0.14%  102.99us         3  34.329us  1.9430us  77.072us  cudaFree
+                    0.12%  88.578us       101     877ns     101ns  38.117us  cuDeviceGetAttribute
+                    0.10%  74.532us         3  24.844us  14.731us  44.211us  cudaMemcpy
+                    0.03%  21.354us         1  21.354us  21.354us  21.354us  cudaDeviceSynchronize
+                    0.02%  16.284us         1  16.284us  16.284us  16.284us  cudaLaunchKernel
+                    0.02%  16.202us         1  16.202us  16.202us  16.202us  cuDeviceGetName
+                    0.01%  5.1850us         1  5.1850us  5.1850us  5.1850us  cuDeviceGetPCIBusId
+                    0.00%     919ns         3     306ns     151ns     583ns  cuDeviceGetCount
+                    0.00%     521ns         1     521ns     521ns     521ns  cuDeviceTotalMem
+                    0.00%     488ns         2     244ns     112ns     376ns  cuDeviceGet
+                    0.00%     215ns         1     215ns     215ns     215ns  cuModuleGetLoadingMode
+                    0.00%     163ns         1     163ns     163ns     163ns  cuDeviceGetUuid
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul 128 128 128 128
+Input matrix dim (128 x 128) (128 x 128) (128 x 128)
+==9640== NVPROF is profiling process 9640, command: ./vecmul 128 128 128 128
+Transfer time host to device 0.000078 seconds
+Kernel Time 0.000096 seconds
+Transfer Time device to host 0.000093 seconds
+==9640== Profiling application: ./vecmul 128 128 128 128
+==9640== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   53.70%  74.337us         1  74.337us  74.337us  74.337us  gemm(double*, double*, double*, int, int, int, int)
+                   31.41%  43.489us         2  21.744us  21.504us  21.985us  [CUDA memcpy HtoD]
+                   14.89%  20.608us         1  20.608us  20.608us  20.608us  [CUDA memcpy DtoH]
+      API calls:   99.34%  75.978ms         3  25.326ms  1.5420us  75.974ms  cudaMalloc
+                    0.22%  165.57us         3  55.188us  32.879us  92.419us  cudaMemcpy
+                    0.18%  138.56us       101  1.3710us     158ns  57.036us  cuDeviceGetAttribute
+                    0.10%  77.321us         1  77.321us  77.321us  77.321us  cudaDeviceSynchronize
+                    0.09%  71.770us         3  23.923us  1.8050us  65.243us  cudaFree
+                    0.03%  24.404us         1  24.404us  24.404us  24.404us  cuDeviceGetName
+                    0.02%  16.955us         1  16.955us  16.955us  16.955us  cudaLaunchKernel
+                    0.01%  8.1140us         1  8.1140us  8.1140us  8.1140us  cuDeviceGetPCIBusId
+                    0.00%  1.5000us         3     500ns     229ns     993ns  cuDeviceGetCount
+                    0.00%     864ns         2     432ns     164ns     700ns  cuDeviceGet
+                    0.00%     425ns         1     425ns     425ns     425ns  cuDeviceTotalMem
+                    0.00%     318ns         1     318ns     318ns     318ns  cuModuleGetLoadingMode
+                    0.00%     282ns         1     282ns     282ns     282ns  cuDeviceGetUuid
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul 256 256 256 256
+Input matrix dim (256 x 256) (256 x 256) (256 x 256)
+==9655== NVPROF is profiling process 9655, command: ./vecmul 256 256 256 256
+Transfer time host to device 0.000219 seconds
+Kernel Time 0.000629 seconds
+Transfer Time device to host 0.000350 seconds
+==9655== Profiling application: ./vecmul 256 256 256 256
+==9655== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   64.01%  525.61us         1  525.61us  525.61us  525.61us  gemm(double*, double*, double*, int, int, int, int)
+                   23.15%  190.08us         2  95.041us  82.433us  107.65us  [CUDA memcpy HtoD]
+                   12.84%  105.47us         1  105.47us  105.47us  105.47us  [CUDA memcpy DtoH]
+      API calls:   98.54%  97.171ms         3  32.390ms  1.4850us  97.167ms  cudaMalloc
+                    0.62%  607.07us         1  607.07us  607.07us  607.07us  cudaDeviceSynchronize
+                    0.57%  563.67us         3  187.89us  76.185us  349.56us  cudaMemcpy
+                    0.11%  112.37us         3  37.457us  1.9240us  86.621us  cudaFree
+                    0.11%  111.48us       101  1.1030us     123ns  46.513us  cuDeviceGetAttribute
+                    0.02%  19.923us         1  19.923us  19.923us  19.923us  cuDeviceGetName
+                    0.02%  19.587us         1  19.587us  19.587us  19.587us  cudaLaunchKernel
+                    0.01%  7.1300us         1  7.1300us  7.1300us  7.1300us  cuDeviceGetPCIBusId
+                    0.00%  1.1320us         3     377ns     178ns     689ns  cuDeviceGetCount
+                    0.00%     582ns         2     291ns     138ns     444ns  cuDeviceGet
+                    0.00%     408ns         1     408ns     408ns     408ns  cuDeviceTotalMem
+                    0.00%     291ns         1     291ns     291ns     291ns  cuModuleGetLoadingMode
+                    0.00%     244ns         1     244ns     244ns     244ns  cuDeviceGetUuid
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul 512 512 512 512
+Input matrix dim (512 x 512) (512 x 512) (512 x 512)
+==9668== NVPROF is profiling process 9668, command: ./vecmul 512 512 512 512
+Transfer time host to device 0.000677 seconds
+Kernel Time 0.003453 seconds
+Transfer Time device to host 0.001112 seconds
+==9668== Profiling application: ./vecmul 512 512 512 512
+==9668== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   76.89%  3.2392ms         1  3.2392ms  3.2392ms  3.2392ms  gemm(double*, double*, double*, int, int, int, int)
+                   15.53%  654.25us         2  327.13us  326.69us  327.56us  [CUDA memcpy HtoD]
+                    7.58%  319.43us         1  319.43us  319.43us  319.43us  [CUDA memcpy DtoH]
+      API calls:   92.71%  72.100ms         3  24.033ms  50.374us  71.999ms  cudaMalloc
+                    4.42%  3.4337ms         1  3.4337ms  3.4337ms  3.4337ms  cudaDeviceSynchronize
+                    2.29%  1.7840ms         3  594.66us  276.98us  1.1115ms  cudaMemcpy
+                    0.39%  304.63us         3  101.54us  68.303us  118.97us  cudaFree
+                    0.11%  86.946us       101     860ns      98ns  36.975us  cuDeviceGetAttribute
+                    0.04%  31.704us         1  31.704us  31.704us  31.704us  cuDeviceGetName
+                    0.02%  17.434us         1  17.434us  17.434us  17.434us  cudaLaunchKernel
+                    0.01%  7.1750us         1  7.1750us  7.1750us  7.1750us  cuDeviceGetPCIBusId
+                    0.00%  1.0470us         3     349ns     155ns     662ns  cuDeviceGetCount
+                    0.00%     478ns         2     239ns     108ns     370ns  cuDeviceGet
+                    0.00%     408ns         1     408ns     408ns     408ns  cuDeviceTotalMem
+                    0.00%     219ns         1     219ns     219ns     219ns  cuModuleGetLoadingMode
+                    0.00%     170ns         1     170ns     170ns     170ns  cuDeviceGetUuid
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul 1024 1024 1024 1024
+Input matrix dim (1024 x 1024) (1024 x 1024) (1024 x 1024)
+==9681== NVPROF is profiling process 9681, command: ./vecmul 1024 1024 1024 1024
+Transfer time host to device 0.002632 seconds
+Kernel Time 0.027283 seconds
+Transfer Time device to host 0.003950 seconds
+==9681== Profiling application: ./vecmul 1024 1024 1024 1024
+==9681== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   82.40%  27.060ms         1  27.060ms  27.060ms  27.060ms  gemm(double*, double*, double*, int, int, int, int)
+                    9.62%  3.1597ms         1  3.1597ms  3.1597ms  3.1597ms  [CUDA memcpy DtoH]
+                    7.98%  2.6208ms         2  1.3104ms  1.3103ms  1.3105ms  [CUDA memcpy HtoD]
+      API calls:   68.21%  74.837ms         3  24.946ms  53.862us  74.724ms  cudaMalloc
+                   24.85%  27.261ms         1  27.261ms  27.261ms  27.261ms  cudaDeviceSynchronize
+                    5.99%  6.5762ms         3  2.1921ms  1.2344ms  3.9495ms  cudaMemcpy
+                    0.81%  889.63us         3  296.54us  90.393us  400.07us  cudaFree
+                    0.08%  87.454us       101     865ns      99ns  36.957us  cuDeviceGetAttribute
+                    0.03%  32.538us         1  32.538us  32.538us  32.538us  cuDeviceGetName
+                    0.02%  18.497us         1  18.497us  18.497us  18.497us  cudaLaunchKernel
+                    0.01%  7.2330us         1  7.2330us  7.2330us  7.2330us  cuDeviceGetPCIBusId
+                    0.00%     980ns         3     326ns     146ns     681ns  cuDeviceGetCount
+                    0.00%     474ns         2     237ns     113ns     361ns  cuDeviceGet
+                    0.00%     391ns         1     391ns     391ns     391ns  cuDeviceTotalMem
+                    0.00%     234ns         1     234ns     234ns     234ns  cuModuleGetLoadingMode
+                    0.00%     181ns         1     181ns     181ns     181ns  cuDeviceGetUuid
+
+
+
+
+pinned:
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvcc -arch=sm_60 -I/usr/local/cuda/samples/common/inc vecmul_pinned.cu -o vecmul_pinned
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul_pinned 32 32 32 32
+Input matrix dim (32 x 32) (32 x 32) (32 x 32)
+==11131== NVPROF is profiling process 11131, command: ./vecmul_pinned 32 32 32 32
+Pinned memory allocation 0.219535 seconds.
+Transfer time host to device 0.000036 seconds
+Kernel Time 0.000034 seconds
+Transfer Time device to host 0.000014 seconds
+==11131== Profiling application: ./vecmul_pinned 32 32 32 32
+==11131== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   68.14%  11.360us         1  11.360us  11.360us  11.360us  gemm(double*, double*, double*, int, int, int, int)
+                   21.31%  3.5520us         2  1.7760us  1.7600us  1.7920us  [CUDA memcpy HtoD]
+                   10.56%  1.7600us         1  1.7600us  1.7600us  1.7600us  [CUDA memcpy DtoH]
+      API calls:   99.10%  80.748ms         4  20.187ms  1.5140us  80.741ms  cudaHostAlloc
+                    0.48%  389.18us         4  97.295us  1.7920us  381.18us  cudaFreeHost
+                    0.13%  104.48us       101  1.0340us      99ns  43.147us  cuDeviceGetAttribute
+                    0.09%  71.609us         3  23.869us  3.5800us  62.014us  cudaFree
+                    0.08%  68.731us         3  22.910us  1.3160us  65.296us  cudaMalloc
+                    0.06%  45.173us         3  15.057us  9.8270us  21.609us  cudaMemcpy
+                    0.02%  18.196us         1  18.196us  18.196us  18.196us  cudaLaunchKernel
+                    0.02%  16.581us         1  16.581us  16.581us  16.581us  cuDeviceGetName
+                    0.02%  13.117us         1  13.117us  13.117us  13.117us  cudaDeviceSynchronize
+                    0.01%  5.0760us         1  5.0760us  5.0760us  5.0760us  cuDeviceGetPCIBusId
+                    0.00%  1.0320us         3     344ns     180ns     631ns  cuDeviceGetCount
+                    0.00%     456ns         2     228ns     106ns     350ns  cuDeviceGet
+                    0.00%     247ns         1     247ns     247ns     247ns  cuDeviceTotalMem
+                    0.00%     236ns         1     236ns     236ns     236ns  cuModuleGetLoadingMode
+                    0.00%     192ns         1     192ns     192ns     192ns  cuDeviceGetUuid
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul_pinned 64 64 64 64
+Input matrix dim (64 x 64) (64 x 64) (64 x 64)
+==11144== NVPROF is profiling process 11144, command: ./vecmul_pinned 64 64 64 64
+Pinned memory allocation 0.248049 seconds.
+Transfer time host to device 0.000044 seconds
+Kernel Time 0.000041 seconds
+Transfer Time device to host 0.000017 seconds
+==11144== Profiling application: ./vecmul_pinned 64 64 64 64
+==11144== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   50.98%  19.200us         1  19.200us  19.200us  19.200us  gemm(double*, double*, double*, int, int, int, int)
+                   35.09%  13.216us         2  6.6080us  6.2080us  7.0080us  [CUDA memcpy HtoD]
+                   13.93%  5.2480us         1  5.2480us  5.2480us  5.2480us  [CUDA memcpy DtoH]
+      API calls:   99.08%  80.231ms         4  20.058ms  1.4900us  80.224ms  cudaHostAlloc
+                    0.48%  384.89us         4  96.221us  1.8460us  376.80us  cudaFreeHost
+                    0.12%  100.99us       101     999ns     114ns  42.547us  cuDeviceGetAttribute
+                    0.09%  70.167us         3  23.389us  2.8370us  60.603us  cudaFree
+                    0.08%  67.119us         3  22.373us  1.3500us  63.598us  cudaMalloc
+                    0.07%  55.444us         3  18.481us  12.820us  26.342us  cudaMemcpy
+                    0.03%  20.972us         1  20.972us  20.972us  20.972us  cudaDeviceSynchronize
+                    0.02%  18.948us         1  18.948us  18.948us  18.948us  cuDeviceGetName
+                    0.02%  18.536us         1  18.536us  18.536us  18.536us  cudaLaunchKernel
+                    0.01%  7.5770us         1  7.5770us  7.5770us  7.5770us  cuDeviceGetPCIBusId
+                    0.00%  1.2590us         3     419ns     187ns     862ns  cuDeviceGetCount
+                    0.00%     561ns         2     280ns     128ns     433ns  cuDeviceGet
+                    0.00%     346ns         1     346ns     346ns     346ns  cuDeviceTotalMem
+                    0.00%     247ns         1     247ns     247ns     247ns  cuModuleGetLoadingMode
+                    0.00%     212ns         1     212ns     212ns     212ns  cuDeviceGetUuid
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul_pinned 128 128 128 128
+Input matrix dim (128 x 128) (128 x 128) (128 x 128)
+==11188== NVPROF is profiling process 11188, command: ./vecmul_pinned 128 128 128 128
+Pinned memory allocation 0.245735 seconds.
+Transfer time host to device 0.000075 seconds
+Kernel Time 0.000097 seconds
+Transfer Time device to host 0.000033 seconds
+==11188== Profiling application: ./vecmul_pinned 128 128 128 128
+==11188== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   53.70%  73.665us         1  73.665us  73.665us  73.665us  gemm(double*, double*, double*, int, int, int, int)
+                   31.58%  43.328us         2  21.664us  21.280us  22.048us  [CUDA memcpy HtoD]
+                   14.72%  20.193us         1  20.193us  20.193us  20.193us  [CUDA memcpy DtoH]
+      API calls:   98.88%  76.227ms         4  19.057ms  1.5750us  76.220ms  cudaHostAlloc
+                    0.50%  384.28us         4  96.071us  1.8610us  376.25us  cudaFreeHost
+                    0.13%  102.95us         3  34.316us  27.859us  42.714us  cudaMemcpy
+                    0.12%  91.535us       101     906ns      97ns  39.293us  cuDeviceGetAttribute
+                    0.10%  76.116us         1  76.116us  76.116us  76.116us  cudaDeviceSynchronize
+                    0.09%  72.525us         3  24.175us  2.3040us  63.441us  cudaFree
+                    0.09%  71.320us         3  23.773us  1.2990us  67.869us  cudaMalloc
+                    0.04%  33.407us         1  33.407us  33.407us  33.407us  cuDeviceGetName
+                    0.02%  18.954us         1  18.954us  18.954us  18.954us  cudaLaunchKernel
+                    0.01%  6.8360us         1  6.8360us  6.8360us  6.8360us  cuDeviceGetPCIBusId
+                    0.00%  1.2450us         3     415ns     165ns     888ns  cuDeviceGetCount
+                    0.00%     462ns         2     231ns     120ns     342ns  cuDeviceGet
+                    0.00%     302ns         1     302ns     302ns     302ns  cuModuleGetLoadingMode
+                    0.00%     271ns         1     271ns     271ns     271ns  cuDeviceTotalMem
+                    0.00%     158ns         1     158ns     158ns     158ns  cuDeviceGetUuid
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul_pinned 256 256 256 256
+Input matrix dim (256 x 256) (256 x 256) (256 x 256)
+==11204== NVPROF is profiling process 11204, command: ./vecmul_pinned 256 256 256 256
+Pinned memory allocation 0.214548 seconds.
+Transfer time host to device 0.000203 seconds
+Kernel Time 0.000614 seconds
+Transfer Time device to host 0.000093 seconds
+==11204== Profiling application: ./vecmul_pinned 256 256 256 256
+==11204== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   68.33%  527.50us         1  527.50us  527.50us  527.50us  gemm(double*, double*, double*, int, int, int, int)
+                   21.33%  164.71us         2  82.353us  81.761us  82.946us  [CUDA memcpy HtoD]
+                   10.34%  79.810us         1  79.810us  79.810us  79.810us  [CUDA memcpy DtoH]
+      API calls:   97.93%  76.320ms         4  19.080ms  1.4420us  76.313ms  cudaHostAlloc
+                    0.76%  590.42us         1  590.42us  590.42us  590.42us  cudaDeviceSynchronize
+                    0.55%  430.47us         4  107.62us  1.7820us  421.12us  cudaFreeHost
+                    0.37%  288.68us         3  96.226us  88.514us  107.74us  cudaMemcpy
+                    0.13%  100.31us         3  33.436us  1.7600us  96.238us  cudaMalloc
+                    0.12%  92.061us       101     911ns     103ns  39.592us  cuDeviceGetAttribute
+                    0.09%  68.806us         3  22.935us  2.7870us  59.965us  cudaFree
+                    0.03%  20.499us         1  20.499us  20.499us  20.499us  cudaLaunchKernel
+                    0.02%  16.912us         1  16.912us  16.912us  16.912us  cuDeviceGetName
+                    0.01%  5.4140us         1  5.4140us  5.4140us  5.4140us  cuDeviceGetPCIBusId
+                    0.00%     955ns         3     318ns     148ns     605ns  cuDeviceGetCount
+                    0.00%     523ns         2     261ns     114ns     409ns  cuDeviceGet
+                    0.00%     316ns         1     316ns     316ns     316ns  cuDeviceTotalMem
+                    0.00%     219ns         1     219ns     219ns     219ns  cuModuleGetLoadingMode
+                    0.00%     174ns         1     174ns     174ns     174ns  cuDeviceGetUuid
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul_pinned 512 512 512 512
+Input matrix dim (512 x 512) (512 x 512) (512 x 512)
+==11217== NVPROF is profiling process 11217, command: ./vecmul_pinned 512 512 512 512
+Pinned memory allocation 0.216809 seconds.
+Transfer time host to device 0.000692 seconds
+Kernel Time 0.003332 seconds
+Transfer Time device to host 0.000333 seconds
+==11217== Profiling application: ./vecmul_pinned 512 512 512 512
+==11217== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   77.04%  3.2396ms         1  3.2396ms  3.2396ms  3.2396ms  gemm(double*, double*, double*, int, int, int, int)
+                   15.39%  647.30us         2  323.65us  323.01us  324.29us  [CUDA memcpy HtoD]
+                    7.57%  318.18us         1  318.18us  318.18us  318.18us  [CUDA memcpy DtoH]
+      API calls:   92.55%  78.751ms         4  19.688ms  537.18us  77.070ms  cudaHostAlloc
+                    3.88%  3.3035ms         1  3.3035ms  3.3035ms  3.3035ms  cudaDeviceSynchronize
+                    1.59%  1.3488ms         4  337.19us  301.42us  437.20us  cudaFreeHost
+                    1.20%  1.0183ms         3  339.44us  331.60us  353.39us  cudaMemcpy
+                    0.35%  301.88us         3  100.63us  68.261us  116.83us  cudaFree
+                    0.26%  221.23us         3  73.742us  49.603us  118.21us  cudaMalloc
+                    0.11%  91.496us       101     905ns      99ns  37.465us  cuDeviceGetAttribute
+                    0.03%  24.955us         1  24.955us  24.955us  24.955us  cudaLaunchKernel
+                    0.02%  15.779us         1  15.779us  15.779us  15.779us  cuDeviceGetName
+                    0.01%  7.2590us         1  7.2590us  7.2590us  7.2590us  cuDeviceGetPCIBusId
+                    0.00%  1.2470us         3     415ns     192ns     792ns  cuDeviceGetCount
+                    0.00%     628ns         2     314ns     125ns     503ns  cuDeviceGet
+                    0.00%     592ns         1     592ns     592ns     592ns  cuModuleGetLoadingMode
+                    0.00%     314ns         1     314ns     314ns     314ns  cuDeviceTotalMem
+                    0.00%     191ns         1     191ns     191ns     191ns  cuDeviceGetUuid
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul_pinned 1024 1024 1024 1024
+Input matrix dim (1024 x 1024) (1024 x 1024) (1024 x 1024)
+==11230== NVPROF is profiling process 11230, command: ./vecmul_pinned 1024 1024 1024 1024
+Pinned memory allocation 0.221121 seconds.
+Transfer time host to device 0.002643 seconds
+Kernel Time 0.028558 seconds
+Transfer Time device to host 0.001348 seconds
+==11230== Profiling application: ./vecmul_pinned 1024 1024 1024 1024
+==11230== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   87.92%  28.468ms         1  28.468ms  28.468ms  28.468ms  gemm(double*, double*, double*, int, int, int, int)
+                    7.97%  2.5816ms         2  1.2908ms  1.2903ms  1.2913ms  [CUDA memcpy HtoD]
+                    4.11%  1.3295ms         1  1.3295ms  1.3295ms  1.3295ms  [CUDA memcpy DtoH]
+      API calls:   67.93%  83.496ms         4  20.874ms  2.0328ms  77.336ms  cudaHostAlloc
+                   23.21%  28.533ms         1  28.533ms  28.533ms  28.533ms  cudaDeviceSynchronize
+                    4.60%  5.6480ms         4  1.4120ms  1.0570ms  2.0667ms  cudaFreeHost
+                    3.23%  3.9664ms         3  1.3221ms  1.2990ms  1.3474ms  cudaMemcpy
+                    0.71%  870.19us         3  290.06us  95.470us  396.71us  cudaFree
+                    0.21%  259.34us         3  86.447us  56.201us  133.98us  cudaMalloc
+                    0.07%  89.963us       101     890ns      97ns  38.513us  cuDeviceGetAttribute
+                    0.02%  23.079us         1  23.079us  23.079us  23.079us  cudaLaunchKernel
+                    0.01%  16.173us         1  16.173us  16.173us  16.173us  cuDeviceGetName
+                    0.00%  4.5790us         1  4.5790us  4.5790us  4.5790us  cuDeviceGetPCIBusId
+                    0.00%  1.0830us         3     361ns     164ns     702ns  cuDeviceGetCount
+                    0.00%     555ns         2     277ns     128ns     427ns  cuDeviceGet
+                    0.00%     368ns         1     368ns     368ns     368ns  cuDeviceTotalMem
+                    0.00%     236ns         1     236ns     236ns     236ns  cuModuleGetLoadingMode
+                    0.00%     176ns         1     176ns     176ns     176ns  cuDeviceGetUuid
+
+
+
+4. 
+
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvcc -arch=sm_60 -I/usr/local/cuda/samples/common/inc vecmul_managed.cu -o vecmul_managed
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul_managed 32 32 32 32
+Input matrix dim (32 x 32) (32 x 32) (32 x 32)
+==11783== NVPROF is profiling process 11783, command: ./vecmul_managed 32 32 32 32
+Kernel Time 0.000307 seconds
+==11783== Profiling application: ./vecmul_managed 32 32 32 32
+==11783== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  268.32us         1  268.32us  268.32us  268.32us  gemm(double*, double*, double*, int, int, int, int)
+      API calls:   99.47%  93.181ms         4  23.295ms  2.1820us  93.159ms  cudaMallocManaged
+                    0.29%  270.83us         1  270.83us  270.83us  270.83us  cudaDeviceSynchronize
+                    0.10%  89.383us       101     884ns     105ns  38.333us  cuDeviceGetAttribute
+                    0.09%  86.176us         4  21.544us  6.7010us  54.005us  cudaFree
+                    0.03%  28.302us         1  28.302us  28.302us  28.302us  cudaLaunchKernel
+                    0.02%  16.333us         1  16.333us  16.333us  16.333us  cuDeviceGetName
+                    0.01%  4.8940us         1  4.8940us  4.8940us  4.8940us  cuDeviceGetPCIBusId
+                    0.00%  1.1610us         3     387ns     145ns     795ns  cuDeviceGetCount
+                    0.00%     509ns         2     254ns     126ns     383ns  cuDeviceGet
+                    0.00%     338ns         1     338ns     338ns     338ns  cuDeviceTotalMem
+                    0.00%     202ns         1     202ns     202ns     202ns  cuModuleGetLoadingMode
+                    0.00%     196ns         1     196ns     196ns     196ns  cuDeviceGetUuid
+
+==11783== Unified Memory profiling result:
+Device "NVIDIA GeForce GTX 1060 with Max-Q Design (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+       2  32.000KB  12.000KB  52.000KB  64.00000KB  11.77600us  Host To Device
+       1         -         -         -           -  254.1140us  Gpu page fault groups
+Total CPU Page faults: 1
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul_managed 64 64 64 64
+Input matrix dim (64 x 64) (64 x 64) (64 x 64)
+==11798== NVPROF is profiling process 11798, command: ./vecmul_managed 64 64 64 64
+Kernel Time 0.000903 seconds
+==11798== Profiling application: ./vecmul_managed 64 64 64 64
+==11798== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  827.91us         1  827.91us  827.91us  827.91us  gemm(double*, double*, double*, int, int, int, int)
+      API calls:   98.83%  100.48ms         4  25.119ms  5.2480us  100.43ms  cudaMallocManaged
+                    0.81%  826.18us         1  826.18us  826.18us  826.18us  cudaDeviceSynchronize
+                    0.17%  174.13us         4  43.531us  16.550us  103.29us  cudaFree
+                    0.09%  86.833us       101     859ns      98ns  36.971us  cuDeviceGetAttribute
+                    0.06%  60.861us         1  60.861us  60.861us  60.861us  cudaLaunchKernel
+                    0.03%  33.745us         1  33.745us  33.745us  33.745us  cuDeviceGetName
+                    0.01%  8.6330us         1  8.6330us  8.6330us  8.6330us  cuDeviceGetPCIBusId
+                    0.00%  1.1070us         3     369ns     155ns     740ns  cuDeviceGetCount
+                    0.00%     529ns         2     264ns     122ns     407ns  cuDeviceGet
+                    0.00%     289ns         1     289ns     289ns     289ns  cuDeviceTotalMem
+                    0.00%     263ns         1     263ns     263ns     263ns  cuModuleGetLoadingMode
+                    0.00%     182ns         1     182ns     182ns     182ns  cuDeviceGetUuid
+
+==11798== Unified Memory profiling result:
+Device "NVIDIA GeForce GTX 1060 with Max-Q Design (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+       4  32.000KB  28.000KB  36.000KB  128.0000KB  23.48800us  Host To Device
+       2         -         -         -           -  798.4690us  Gpu page fault groups
+Total CPU Page faults: 2
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul_managed 128 128 128 128
+Input matrix dim (128 x 128) (128 x 128) (128 x 128)
+==11843== NVPROF is profiling process 11843, command: ./vecmul_managed 128 128 128 128
+Kernel Time 0.000569 seconds
+==11843== Profiling application: ./vecmul_managed 128 128 128 128
+==11843== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  531.30us         1  531.30us  531.30us  531.30us  gemm(double*, double*, double*, int, int, int, int)
+      API calls:   99.16%  97.196ms         4  24.299ms  2.1890us  97.173ms  cudaMallocManaged
+                    0.54%  533.48us         1  533.48us  533.48us  533.48us  cudaDeviceSynchronize
+                    0.13%  122.83us         4  30.706us  7.3950us  73.062us  cudaFree
+                    0.11%  103.97us       101  1.0290us     127ns  43.349us  cuDeviceGetAttribute
+                    0.03%  32.245us         1  32.245us  32.245us  32.245us  cudaLaunchKernel
+                    0.02%  18.403us         1  18.403us  18.403us  18.403us  cuDeviceGetName
+                    0.01%  6.9770us         1  6.9770us  6.9770us  6.9770us  cuDeviceGetPCIBusId
+                    0.00%  1.0620us         3     354ns     214ns     540ns  cuDeviceGetCount
+                    0.00%     572ns         2     286ns     151ns     421ns  cuDeviceGet
+                    0.00%     290ns         1     290ns     290ns     290ns  cuDeviceTotalMem
+                    0.00%     261ns         1     261ns     261ns     261ns  cuModuleGetLoadingMode
+                    0.00%     207ns         1     207ns     207ns     207ns  cuDeviceGetUuid
+
+==11843== Unified Memory profiling result:
+Device "NVIDIA GeForce GTX 1060 with Max-Q Design (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+      23  22.261KB  4.0000KB  132.00KB  512.0000KB  98.88100us  Host To Device
+       2         -         -         -           -  452.7070us  Gpu page fault groups
+Total CPU Page faults: 4
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul_managed 256 256 256 256
+Input matrix dim (256 x 256) (256 x 256) (256 x 256)
+==11856== NVPROF is profiling process 11856, command: ./vecmul_managed 256 256 256 256
+Kernel Time 0.001709 seconds
+==11856== Profiling application: ./vecmul_managed 256 256 256 256
+==11856== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  1.6793ms         1  1.6793ms  1.6793ms  1.6793ms  gemm(double*, double*, double*, int, int, int, int)
+      API calls:   97.92%  92.996ms         4  23.249ms  2.3860us  92.973ms  cudaMallocManaged
+                    1.77%  1.6815ms         1  1.6815ms  1.6815ms  1.6815ms  cudaDeviceSynchronize
+                    0.16%  156.23us         4  39.057us  6.4540us  125.90us  cudaFree
+                    0.09%  89.636us       101     887ns     100ns  38.108us  cuDeviceGetAttribute
+                    0.03%  24.293us         1  24.293us  24.293us  24.293us  cudaLaunchKernel
+                    0.02%  14.530us         1  14.530us  14.530us  14.530us  cuDeviceGetName
+                    0.00%  4.7050us         1  4.7050us  4.7050us  4.7050us  cuDeviceGetPCIBusId
+                    0.00%  1.2590us         3     419ns     146ns     832ns  cuDeviceGetCount
+                    0.00%     561ns         2     280ns     126ns     435ns  cuDeviceGet
+                    0.00%     280ns         1     280ns     280ns     280ns  cuDeviceTotalMem
+                    0.00%     200ns         1     200ns     200ns     200ns  cuModuleGetLoadingMode
+                    0.00%     169ns         1     169ns     169ns     169ns  cuDeviceGetUuid
+
+==11856== Unified Memory profiling result:
+Device "NVIDIA GeForce GTX 1060 with Max-Q Design (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+      46  44.522KB  4.0000KB  836.00KB  2.000000MB  375.4600us  Host To Device
+       6         -         -         -           -  1.203562ms  Gpu page fault groups
+Total CPU Page faults: 6
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul_managed 512 512 512 512
+Input matrix dim (512 x 512) (512 x 512) (512 x 512)
+==11869== NVPROF is profiling process 11869, command: ./vecmul_managed 512 512 512 512
+Kernel Time 0.005495 seconds
+==11869== Profiling application: ./vecmul_managed 512 512 512 512
+==11869== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  5.3955ms         1  5.3955ms  5.3955ms  5.3955ms  gemm(double*, double*, double*, int, int, int, int)
+      API calls:   94.20%  96.818ms         4  24.204ms  26.935us  96.669ms  cudaMallocManaged
+                    5.31%  5.4588ms         1  5.4588ms  5.4588ms  5.4588ms  cudaDeviceSynchronize
+                    0.34%  354.09us         4  88.523us  29.030us  125.56us  cudaFree
+                    0.09%  89.010us       101     881ns     102ns  38.493us  cuDeviceGetAttribute
+                    0.03%  28.107us         1  28.107us  28.107us  28.107us  cudaLaunchKernel
+                    0.02%  16.928us         1  16.928us  16.928us  16.928us  cuDeviceGetName
+                    0.01%  7.1510us         1  7.1510us  7.1510us  7.1510us  cuDeviceGetPCIBusId
+                    0.00%  1.0850us         3     361ns     155ns     730ns  cuDeviceGetCount
+                    0.00%     460ns         2     230ns     109ns     351ns  cuDeviceGet
+                    0.00%     308ns         1     308ns     308ns     308ns  cuDeviceTotalMem
+                    0.00%     218ns         1     218ns     218ns     218ns  cuModuleGetLoadingMode
+                    0.00%     215ns         1     215ns     215ns     215ns  cuDeviceGetUuid
+
+==11869== Unified Memory profiling result:
+Device "NVIDIA GeForce GTX 1060 with Max-Q Design (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+      60  68.267KB  4.0000KB  0.9961MB  4.000000MB  711.0760us  Host To Device
+      15         -         -         -           -  2.600052ms  Gpu page fault groups
+Total CPU Page faults: 18
+zihao@zihao-G3:~/Desktop/DD2360/hw_4/ex_3$ nvprof ./vecmul_managed 1024 1024 1024 1024
+Input matrix dim (1024 x 1024) (1024 x 1024) (1024 x 1024)
+==11883== NVPROF is profiling process 11883, command: ./vecmul_managed 1024 1024 1024 1024
+Kernel Time 0.032505 seconds
+==11883== Profiling application: ./vecmul_managed 1024 1024 1024 1024
+==11883== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:  100.00%  32.379ms         1  32.379ms  32.379ms  32.379ms  gemm(double*, double*, double*, int, int, int, int)
+      API calls:   79.36%  132.51ms         4  33.127ms  24.997us  132.36ms  cudaMallocManaged
+                   19.44%  32.454ms         1  32.454ms  32.454ms  32.454ms  cudaDeviceSynchronize
+                    0.89%  1.4904ms         4  372.60us  302.18us  431.37us  cudaFree
+                    0.24%  401.24us       101  3.9720us     481ns  152.85us  cuDeviceGetAttribute
+                    0.04%  66.180us         1  66.180us  66.180us  66.180us  cuDeviceGetName
+                    0.02%  35.189us         1  35.189us  35.189us  35.189us  cudaLaunchKernel
+                    0.00%  5.1810us         1  5.1810us  5.1810us  5.1810us  cuDeviceGetPCIBusId
+                    0.00%  4.3960us         3  1.4650us     745ns  2.8660us  cuDeviceGetCount
+                    0.00%  2.7690us         2  1.3840us     634ns  2.1350us  cuDeviceGet
+                    0.00%  1.3440us         1  1.3440us  1.3440us  1.3440us  cuDeviceTotalMem
+                    0.00%     984ns         1     984ns     984ns     984ns  cuModuleGetLoadingMode
+                    0.00%     806ns         1     806ns     806ns     806ns  cuDeviceGetUuid
+
+==11883== Unified Memory profiling result:
+Device "NVIDIA GeForce GTX 1060 with Max-Q Design (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+     332  49.349KB  4.0000KB  0.9922MB  16.00000MB  2.884377ms  Host To Device
+      62         -         -         -           -  8.661360ms  Gpu page fault groups
+Total CPU Page faults: 72
+
+
+
